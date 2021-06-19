@@ -1,1 +1,25 @@
-// placeholder
+
+:template_aws_cloudformation_stack:
+:template_aws_ec2_securitygroup:
+:template_aws_ec2_securitygroupingress:
+:template_aws_ecs_cluster:
+:template_aws_ecs_service:
+:template_aws_ecs_taskdefinition:
+:template_aws_efs_accesspoint:
+:template_aws_efs_filesystem:
+:template_aws_efs_mounttarget:
+:template_aws_elasticloadbalancingv2_listener:
+:template_aws_elasticloadbalancingv2_loadbalancer:
+:template_aws_elasticloadbalancingv2_targetgroup:
+:template_aws_iam_role:
+:template_aws_logs_loggroup:
+:template_aws_servicediscovery_privatednsnamespace:
+:template_aws_servicediscovery_service:
+:template_cloudformation:
+:template_ec2:
+:template_ecs:
+:template_efs:
+:template_elasticloadbalancingv2:
+:template_iam:
+:template_logs:
+:template_servicediscovery:
