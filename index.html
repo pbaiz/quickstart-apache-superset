@@ -182,7 +182,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
   padding-top:0;
   overflow:hidden;
   background:#283e5b;
-  border-bottom: 4px solid #435c7c;
+  /* border-bottom: 4px solid #435c7c; */
   width:320px;
   height:154px;
   top:0;
@@ -411,7 +411,7 @@ span.icon>.fa{cursor:default}
 a span.icon>.fa{cursor:inherit}
 .admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
 .admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
-.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";color: rgb(3, 87, 21);}
 .admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
 .admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
 .admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
@@ -747,8 +747,43 @@ p {
   font-weight  : 300 !important;
 }
 
-#toc.toc2 #toctitle{
-  background-image: url('images/AWS-Logo.svg');
+/* image layout */
+#toc.toc2 #toctitle {
+  background-image: url("images/AWS-Logo.svg");
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center;
+  width: auto;
+  height: 15%;
+}
+
+/* Left Navbar size */
+#toc.toc2 {
+  width: 17%;
+  min-width: 15em;
+}
+
+/* auto width for main page */
+body.toc2 {
+  padding-left: 22%;
+  padding-right: 2%;
+}
+
+/* hide left nav bar if page size is smaller than 767px */
+@media screen and (max-width: 767px) {
+  #toc {
+      display: none !important;
+  }
+  body.toc2 {
+    padding-left: 1%;
+    padding-right: 1%;
+    position: relative;
+  }
+
+  #content {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
 }
 
 /* QS Tables */
@@ -810,7 +845,14 @@ p.footer-text a{color:#d7d8d8}
 <li><a href="#_best_practices_for_using_apache_superset_on_aws">Best practices for using Apache Superset on AWS</a></li>
 <li><a href="#_security">Security</a></li>
 <li><a href="#_faq">FAQ</a></li>
-<li><a href="#_parameter_reference">Parameter reference</a></li>
+<li><a href="#_customer_responsibility">Customer responsibility</a></li>
+<li><a href="#_parameter_reference">Parameter reference</a>
+<ul class="sectlevel2">
+<li><a href="#_parameters_for_deploying_into_an_new_vpc">Parameters for deploying into an new VPC</a></li>
+<li><a href="#_parameters_for_deploying_into_an_existing_vpc">Parameters for deploying into an existing VPC</a></li>
+<li><a href="#_parameters_for_deploying_into_an_existing_vpc_2">Parameters for deploying into an Existing VPC</a></li>
+</ul>
+</li>
 <li><a href="#_send_us_feedback">Send us feedback</a></li>
 <li><a href="#_quick_start_reference_deployments">Quick Start reference deployments</a></li>
 <li><a href="#_github_repository">GitHub repository</a></li>
@@ -825,13 +867,13 @@ p.footer-text a{color:#d7d8d8}
 <h2 id="_quick_start_reference_deployment" class="discrete text-left text-center">Quick Start Reference Deployment</h2>
 <div class="imageblock text-center">
 <div class="content">
-<img src="https://aws-quickstart.s3.amazonaws.com/quickstart-superset-on-aws/docs/boilerplate/.images/aws-quickstart-graphic.png" alt="QS" width="80" height="80">
+<img src="https://aws-quickstart.s3.amazonaws.com/quickstart-apache-superset/docs/boilerplate/.images/aws-quickstart-graphic.png" alt="QS" width="80" height="80">
 </div>
 </div>
 <div class="paragraph text-center">
-<p><strong>July 2021</strong><br>
+<p><strong>August 2021</strong><br>
 <em>Ke Yi, AWS Great China Region Solution team</em><br>
-<em>Troy Ameigh, AWS Quick Start team</em></p>
+<em>Troy Ameigh, AWS Integration &amp; Automation team</em></p>
 </div>
 <div class="admonitionblock tip text-left">
 <table>
@@ -840,7 +882,7 @@ p.footer-text a{color:#d7d8d8}
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Visit our <a href="https://github.com/aws-quickstart/quickstart-superset-on-aws" target="_blank" rel="noopener">GitHub repository</a> for source files and to post feedback,
+Visit our <a href="https://github.com/aws-quickstart/quickstart-apache-superset" target="_blank" rel="noopener">GitHub repository</a> for source files and to post feedback,
 report bugs, or submit feature ideas for this Quick Start.
 </td>
 </tr>
@@ -855,10 +897,13 @@ report bugs, or submit feature ideas for this Quick Start.
 <h2 id="_overview">Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This guide provides instructions for deploying the Apache Superset Quick Start reference architecture on the AWS Cloud.</p>
+<p>This Quick Start guide provides instructions for deploying the Apache Superset reference architecture on the AWS Cloud. Apache Superset is open-source software that can help you with data exploration and visualization. It uses ClickHouse as a database management system to store data that can be visualized through Apache Superset.</p>
 </div>
 <div class="paragraph">
-<p>This Quick Start is for user who plan or already using Apache Superset as their Business Intelligence (BI) platform, to realize transition from data-driven cognition to data-driven decision-making, following AWS best practises.</p>
+<p>CLickHouse is an open-source, column-oriented database management system, which can be used for online analytical processing of queries (OLAP). ClickHouse supports linear scalability, compression, and drive optimization. It also comes with features, such as distributed and parallel query processing. For more information, see the <a href="https://clickhouse.tech/" target="_blank" rel="noopener">ClickHouse website</a>.</p>
+</div>
+<div class="paragraph">
+<p>This Quick Start is for users who want to use Apache Superset as a business intelligence platform for transitioning from data-driven cognition to data-driven decision making, following AWS best practices.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -878,7 +923,10 @@ Amazon may share user-deployment information with the AWS Partner that collabora
 <h2 id="_apache_superset_on_aws">Apache Superset on AWS</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Inbound client traffic redirects through an Application Load Balancer (ALB) to an Amazon Elastic Container Service (Amazon ECS) cluster, which is the core service for all Superset modules, including the core business framework, cache, database, and message queue. Each module runs separately as a single Amazon ECS service and relaunches if any of your tasks fail. Discovery of all ECS services is handled by AWS Cloud Map through an internal private DNS, and outbound traffic, such as a software updates, connect through network address translation (NAT) gateways. Persistent data includes queried data, and system metadata is stored in an Elastic File System, in consideration of security and cost.</p>
+<p>Inbound client traffic redirects through an Application Load Balancer to an Amazon Elastic Container Service (Amazon ECS) cluster. Amazon ECS is the core service for all Superset modules, including the core business framework, cache, database, and message queue. Each module runs separately as a single Amazon ECS instance and relaunches if any tasks fail.</p>
+</div>
+<div class="paragraph">
+<p>Discovery of all Amazon ECS services is handled by AWS Cloud Map through an internal, private DNS. Outbound traffic, such as for software updates, connects through network address translation (NAT) gateways. Persistent data, which includes queried data and system metadata, is stored in an Elastic File System according to security and cost considerations.</p>
 </div>
 <div class="paragraph">
 <p>Compared to the community Apache version, Superset provides the following:</p>
@@ -886,7 +934,7 @@ Amazon may share user-deployment information with the AWS Partner that collabora
 <div class="ulist">
 <ul>
 <li>
-<p>Core modules (that is, Superset, Cache, and Database) that are highly available.</p>
+<p>Core modules (that is, Superset, cache, and database) that are highly available.</p>
 </li>
 <li>
 <p>Business data (that is, metadata, query data, and interactive data) persistence.</p>
@@ -895,10 +943,10 @@ Amazon may share user-deployment information with the AWS Partner that collabora
 <p>Platform elasticity and scalability. Users do not need to maintain the infrastructure and associated resource scheduling.</p>
 </li>
 <li>
-<p>To display existing data, preinstalled SQL, PostgreSQL, Redshift, Athena, and Clickhouse data-source driver.</p>
+<p>To display existing data, preinstalled SQL, PostgreSQL, Amazon Redshift, Athena, and ClickHouse data-source driver.</p>
 </li>
 <li>
-<p>For future trend predictios, preinstalled timing prediction algorithm that are based on imported data.</p>
+<p>For future trend predictions, a preinstalled timing-prediction algorithm that is based on imported data.</p>
 </li>
 <li>
 <p>Visual Kanban for real-time service metrics and comprehensive application monitoring.</p>
@@ -927,7 +975,7 @@ see the pricing pages for each AWS service you use. Prices are subject to change
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-After you deploy the Quick Start, <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-gettingstarted-turnonreports.html" target="_blank" rel="noopener">create AWS Cost and Usage Reports</a> to deliver billing metrics to an Amazon Simple Storage Service (Amazon S3) bucket in your account. These reports provide cost estimates based on usage throughout each month and aggregate the data at the end of the month. For more information, see <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html" target="_blank" rel="noopener">What are AWS Cost and Usage Reports?</a>
+After you deploy the Quick Start, create <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-gettingstarted-turnonreports.html" target="_blank" rel="noopener">AWS Cost and Usage Reports</a> to deliver billing metrics to an Amazon Simple Storage Service (Amazon S3) bucket in your account. These reports provide cost estimates based on usage throughout each month and aggregate the data at the end of the month. For more information, see <a href="https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html" target="_blank" rel="noopener">What are AWS Cost and Usage Reports?</a>
 </td>
 </tr>
 </table>
@@ -937,7 +985,9 @@ After you deploy the Quick Start, <a href="https://docs.aws.amazon.com/awsaccoun
 <div class="sect1">
 <h2 id="_software_licenses">Software licenses</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>No additional licenses are required to use this Quick Start.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -967,24 +1017,43 @@ AWS Cloud.</p>
 best practices, to provide you with your own virtual network on AWS.*</p>
 </li>
 <li>
-<p>In the public subnets:</p>
+<p>A managed internet gateway to direct inbound traffic to an Application Load Balancer, which manages traffic to the Fargate cluster.</p>
+</li>
+<li>
+<p>In the public subnets, managed network address translation (NAT) gateways to provide outbound
+internet access for resources in the private subnets.*</p>
+</li>
+<li>
+<p>In the private subnets:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Managed internet gateway for inbound traffic to an Application Load Balancer (ALB).</p>
+<p>An Amazon ECS cluster using Fargate to provide all Superset functions, including the core system, cache, database, message queue, and frontend.</p>
 </li>
 <li>
-<p>Managed network address translation (NAT) gateways to provide outbound
-internet access for resources in the private subnets.*</p>
+<p>Amazon EFS to provide metadata, query cached-data persistency, and share service modules.</p>
+</li>
+<li>
+<p>AWS Cloud Map, a discovery service for application resources.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>An Amazon Elastic Container Service (Amazon ECS) cluster to provide all Superset functions, including the core system, cache, database, message queue, and frontend.</p>
+<p>Amazon Athena, a serverless, interactive query service to query data and analyze big data in Amazon S3 using standard SQL.</p>
 </li>
 <li>
-<p>An Amazon Elastic File System (Amazon EFS) to provide metadata, query cache data persistency, and share service modules.</p>
+<p>Amazon Redshift, a fully managed, petabyte-scale data warehouse service.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A MySQL instance, which is included with ClickHouse.</p>
+</li>
+<li>
+<p>A Postgres instance, which is included with ClickHouse.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -1005,7 +1074,7 @@ and <a href="https://aws.amazon.com/training/" target="_blank" rel="noopener">AW
 deploy, and operate your infrastructure and applications on the AWS Cloud.</p>
 </div>
 <div class="paragraph">
-<p>This Quick Start assumes familiarity with basic Business Intelligence (BI) operations, including importing data sources, customizing datasets, and visualizing using a prebuilt dashboard. If data connections are involved, a working knowledge of Athena and Redshift is recommended.</p>
+<p>This Quick Start assumes familiarity with basic business intelligence operations, including importing datasources, customizing datasets, and visualizing using a prebuilt dashboard. If data connections are involved, a working knowledge of Athena and Amazon Redshift is recommended.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1025,7 +1094,7 @@ deploy, and operate your infrastructure and applications on the AWS Cloud.</p>
 <div class="sect3">
 <h4 id="_resource_quotas">Resource quotas</h4>
 <div class="paragraph">
-<p>If necessary, request <a href="https://console.aws.amazon.com/servicequotas/home?region=us-east-2#!/" target="_blank" rel="noopener">service quota increases</a> for the following resources. You might request quota increases to avoid exceeding the default limits for any resources that are shared across multiple deployments. The <a href="https://console.aws.amazon.com/servicequotas/home?region=us-east-2#!/" target="_blank" rel="noopener">Service Quotas console</a> displays your usage and quotas for some aspects of some services. For more information, see <a href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html" target="_blank" rel="noopener">What is Service Quotas?</a> and <a href="https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html" target="_blank" rel="noopener">AWS service quotas</a>.</p>
+<p>If necessary, request <a href="https://console.aws.amazon.com/servicequotas/home?region=us-east-2#!/" target="_blank" rel="noopener">service quota increases</a> for the following resources. You might need to request increases if your existing deployment currently uses these resources and if this Quick Start deployment could result in exceeding the default quotas. The <a href="https://console.aws.amazon.com/servicequotas/home?region=us-east-2#!/" target="_blank" rel="noopener">Service Quotas console</a> displays your usage and quotas for some aspects of some services. For more information, see <a href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html" target="_blank" rel="noopener">What is Service Quotas?</a> and <a href="https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html" target="_blank" rel="noopener">AWS service quotas</a>.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1044,7 +1113,7 @@ deploy, and operate your infrastructure and applications on the AWS Cloud.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Nat gateways</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NAT gateways</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 </tr>
 <tr>
@@ -1064,32 +1133,32 @@ deploy, and operate your infrastructure and applications on the AWS Cloud.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Elastic Container Service (ECS) Cluster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon ECS clusters</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Elastic Container Service (ECS) Service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon ECS services</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Elastic File System (EFS) AccessPoint</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon EFS access points</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Elastic File System (EFS) FileSystem</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon EFS file systems</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Cloud Map SeviceDiscovery</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS Cloud Map <a href="https://docs.aws.amazon.com/cloud-map/latest/api/API_DiscoverInstances.html" target="_blank" rel="noopener">DiscoverInstances</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_supported_regions">Supported Regions</h4>
+<h4 id="_supported_aws_regions">Supported AWS Regions</h4>
 <div class="paragraph">
-<p>This Quick Start is supported in AWS Regions where Amazon Elastic Container Service (ECS) is supported. For a list of supported Regions, see <a href="https://docs.aws.amazon.com/general/latest/gr/ecs-service.html" target="_blank" rel="noopener">Amazon ECS endpoints and quotas</a>.</p>
+<p>This Quick Start is supported in AWS Regions where Amazon ECS is supported. For a list of supported Regions, see <a href="https://docs.aws.amazon.com/general/latest/gr/ecs-service.html" target="_blank" rel="noopener">Amazon ECS endpoints and quotas</a>.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1126,7 +1195,7 @@ Certain Regions are available on an opt-in basis. For more information, see <a h
 </ul>
 </div>
 <div class="paragraph">
-<p>Theis Quick Start provides separate templates for these options. It also lets you configure Classless Inter-Domain Routing (CIDR) blocks, instance types, and Apache Superset settings, as discussed later in this guide.</p>
+<p>This Quick Start provides separate templates for these options. It also lets you configure Classless Inter-Domain Routing (CIDR) blocks, instance types, and Apache Superset settings, as discussed later in this guide.</p>
 </div>
 </div>
 </div>
@@ -1140,7 +1209,7 @@ Certain Regions are available on an opt-in basis. For more information, see <a h
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Sign in to your AWS account at <a href="https://aws.amazon.com" class="bare">https://aws.amazon.com</a> (<a href="https://www.amazonaws.cn/en/" class="bare">https://www.amazonaws.cn/en/</a> for China Regions) with an IAM user role that has the necessary permissions. For more information, see <a href="#_planning_the_deployment">Planning the deployment</a>, earlier in this guide.</p>
+<p>Sign in to your AWS account at <a href="https://aws.amazon.com" target="_blank" rel="noopener">https://aws.amazon.com</a> (for China Regions, sign in at <a href="https://www.amazonaws.cn/en/" target="_blank" rel="noopener">https://www.amazonaws.cn/en/</a>) with an IAM user role that has the necessary permissions. For more information, see <a href="#_planning_the_deployment">Planning the deployment</a>, earlier in this guide.</p>
 </li>
 <li>
 <p>Ensure that your AWS account is configured correctly, as discussed in the <a href="#_technical_requirements">Technical requirements</a> section.</p>
@@ -1176,12 +1245,12 @@ If you deploy Apache Superset into an existing VPC, ensure that your VPC has two
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="https://superset-template.s3.cn-north-1.amazonaws.com.cn/superset-on-aws-existing-vpc.template.yaml" target="_blank" rel="noopener">Deploy Apache Superset into a existing VPC on AWS</a></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="http://qs_template_permalink" target="_blank" rel="noopener">View template</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="https://fwd.aws/q7qnb?" target="_blank" rel="noopener">Deploy Apache Superset into a new VPC on AWS</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="https://fwd.aws/J5d9j?" target="_blank" rel="noopener">View template</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="https://superset-template.s3.cn-north-1.amazonaws.com.cn/superset-on-aws.main.template.yaml" target="_blank" rel="noopener">Deploy Apache Superset into an new VPC on AWS</a></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="http://qs_template_permalink" target="_blank" rel="noopener">View template</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="https://fwd.aws/jWBdy?" target="_blank" rel="noopener">Deploy Apache Superset into an existing VPC on AWS</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="https://fwd.aws/XbeE7?" target="_blank" rel="noopener">View template</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -1224,7 +1293,7 @@ If you deploy Apache Superset into an existing VPC, ensure that your VPC has two
 </div>
 </li>
 <li>
-<p>On the <strong>Configure stack options</strong> page, you can <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html" target="_blank" rel="noopener">specify tags</a> (key-value pairs) for resources in your stack and <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-add-tags.html" target="_blank" rel="noopener">set advanced options</a>. When you’re finished, choose <strong>Next</strong>.</p>
+<p>On the <strong>Configure stack options</strong> page, you can <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html" target="_blank" rel="noopener">specify tags</a> (key-value pairs) for resources in your stack and <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-add-tags.html" target="_blank" rel="noopener">set advanced options</a>. When you finish, choose <strong>Next</strong>.</p>
 </li>
 <li>
 <p>On the <strong>Review</strong> page, review and confirm the template settings. Under <strong>Capabilities</strong>, select the two check boxes to acknowledge that the template creates IAM resources and might require the ability to automatically expand macros.</p>
@@ -1236,15 +1305,9 @@ If you deploy Apache Superset into an existing VPC, ensure that your VPC has two
 <p>Monitor the status of the stack. When the status is <strong>CREATE_COMPLETE</strong>, the Apache Superset deployment is ready.</p>
 </li>
 <li>
-<p>Use the values displayed in the <strong>Outputs</strong> tab for the stack, as shown in <a href="#cfn_outputs">Figure 2</a>, to view the created resources.</p>
+<p>To view the created resources, see the values displayed in the <strong>Outputs</strong> tab for the stack.</p>
 </li>
 </ol>
-</div>
-<div id="cfn_outputs" class="imageblock">
-<div class="content">
-<a class="image" href="images/cfn_outputs.png"><img src="images/cfn_outputs.png" alt="cfn_outputs" width="100%" height="100%"></a>
-</div>
-<div class="title">Figure 2. Apache Superset outputs after successful deployment</div>
 </div>
 </div>
 </div>
@@ -1253,7 +1316,7 @@ If you deploy Apache Superset into an existing VPC, ensure that your VPC has two
 <h2 id="_best_practices_for_using_apache_superset_on_aws">Best practices for using Apache Superset on AWS</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you choose <strong>Yes</strong> for option <strong>WithExample</strong>, you can explore a sample dashboard with a predefined dataset after loggin in to the Superset console. Otherwise, you must connect to your data source (for example, Redshift, Amazon S3), customize your data, and create a dashboard from the provided visualization plugins. For more information, see the <a href="https://superset.apache.org/docs" target="_blank" rel="noopener">Superset documentation</a>.</p>
+<p>If you choose <strong>Yes</strong> for the <strong>WithExample</strong> option, you can explore a sample dashboard with a predefined dataset after you log in to the Superset console. Otherwise, you must connect to your datasource (for example, Amazon Redshift or Amazon S3), customize your data, and create a dashboard from the provided visualization plugins. For more information, see the <a href="https://superset.apache.org/docs" target="_blank" rel="noopener">Superset documentation</a>.</p>
 </div>
 </div>
 </div>
@@ -1261,7 +1324,7 @@ If you deploy Apache Superset into an existing VPC, ensure that your VPC has two
 <h2 id="_security">Security</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Apache Superset provides a granular security model through users, roles, and customized permissions. Users can associate multiple roles that comprise sets of permissions to access different Superset resources, including <strong>Model &amp; Action</strong>, <strong>Views</strong>, <strong>Data Sources</strong>, and <strong>Databases</strong>. By creating filters assigned to a particular table, the granularity of data access is row level, which means you can specify rows that meet only certain conditions for your users. For more information, see <a href="https://superset.apache.org/docs/security" target="_blank" rel="noopener">Superset Security</a>.</p>
+<p>Apache Superset provides a granular security model through users, roles, and customized permissions. You can associate multiple roles that comprise sets of permissions to access different Superset resources, including <strong>Model &amp; Action</strong>, <strong>Views</strong>, <strong>Data Sources</strong>, and <strong>Databases</strong>. By creating filters assigned to a particular table, the granularity of data access is row level, which means you can specify rows that meet only certain conditions for your users. For more information, see <a href="https://superset.apache.org/docs/security" target="_blank" rel="noopener">Superset Security</a>.</p>
 </div>
 </div>
 </div>
@@ -1295,6 +1358,14 @@ When you set <strong>Rollback on failure</strong> to <strong>Disabled</strong>, 
 </div>
 </div>
 <div class="sect1">
+<h2 id="_customer_responsibility">Customer responsibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After you successfully deploy this Quick Start, confirm that your resources and services are updated and configured — including any required patches — to meet your security and other needs. For more information, see the <a href="https://aws.amazon.com/compliance/shared-responsibility-model/" target="_blank" rel="noopener">AWS Shared Responsibility Model</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_parameter_reference">Parameter reference</h2>
 <div class="sectionbody">
 <div class="admonitionblock note">
@@ -1304,10 +1375,341 @@ When you set <strong>Rollback on failure</strong> to <strong>Disabled</strong>, 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Unless you are customizing the Quick Start templates for your own deployment projects, we recommend that you keep the default settings for the parameters labeled <code>Quick Start S3 bucket name</code>, <code>Quick Start S3 bucket
-Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parameter settings automatically updates code references to point to a new Quick Start location. For more information, see the <a href="https://aws-quickstart.github.io/option1.html" target="_blank" rel="noopener">AWS Quick Start Contributor’s Guide</a>.
+Unless you are customizing the Quick Start templates for your own deployment projects, keep the default settings for the parameters labeled <strong>Quick Start S3 bucket name</strong>, <strong>Quick Start S3 bucket Region</strong>, and <strong>Quick Start S3 key prefix</strong>. Changing these parameter settings automatically updates code references to point to a new Quick Start location. For more information, see the <a href="https://aws-quickstart.github.io/option1.html" target="_blank" rel="noopener">AWS Quick Start Contributor’s Guide</a>.
 </td>
 </tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_parameters_for_deploying_into_an_new_vpc">Parameters for deploying into an new VPC</h3>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. AWS account configuration</caption>
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 11%;">
+<col style="width: 73%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter label (name)</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Superset user name
+(<code>SuperSetUserName</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>supersetuser</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Superset user name.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Superset password
+(<code>SuperSetUserPassword</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Superset password. A strict password policy is recommended.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Populate example dashboard
+(<code>WithExample</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'Enables or disables populating the dashboard example. Setting this parameter to "Yes" populates the dashboard example.'</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Install Prophet library
+(<code>InstallProphet</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'Enables or disables Prophet library installation for Forecasting Analytics. Setting this parameter to "Yes" installs Prophet to enable Forecasting Analytics.'</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elastic container cluster name
+(<code>ClusterName</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>supersetOnAWS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the Amazon ECS cluster.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Network configuration</caption>
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 11%;">
+<col style="width: 73%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter label (name)</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Availability Zones
+(<code>AvailabilityZones</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of Availability Zones to use for the VPC subnets.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VPC CIDR blocks
+(<code>VPCCIDR</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>192.168.0.0/16</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enter the IP range (CIDR notation) for this VPC.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public subnet for Availability Zone 1
+(<code>PublicSubnet1CIDR</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>192.168.10.0/24</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enter the IP range (CIDR notation) for the public subnet in the Availability Zone 1.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public subnet for Availability Zone 2
+(<code>PublicSubnet2CIDR</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>192.168.11.0/24</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enter the IP range (CIDR notation) for the public subnet in Availability Zone 2.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private subnet for Availability Zone 1
+(<code>PrivateSubnet1CIDR</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>192.168.20.0/24</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enter the IP range (CIDR notation) for the private subnet in Availability Zone 1.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private subnet for Availability Zone 2
+(<code>PrivateSubnet2CIDR</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>192.168.21.0/24</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enter the IP range (CIDR notation) for the private subnet in Availability Zone 2.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. AWS Quick Start configuration</caption>
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 11%;">
+<col style="width: 73%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter label (name)</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quick Start S3 bucket name
+(<code>QSS3BucketName</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>aws-quickstart</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S3 bucket name for the Quick Start assets. This string can include numbers, lowercase letters, uppercase letters, and hyphens (-). It cannot start or end with a hyphen (-).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quick Start S3 key prefix
+(<code>QSS3KeyPrefix</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>quickstart-aws-superset/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S3 key prefix for the Quick Start assets. Quick Start key prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), periods (.) and forward slashes (/).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quick Start S3 bucket Region
+(<code>QSS3BucketRegion</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cn-north-1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Region where the Quick Start S3 bucket (QSS3BucketName) is hosted. When using your own bucket, you must specify this value.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_parameters_for_deploying_into_an_existing_vpc">Parameters for deploying into an existing VPC</h3>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Account configuration</caption>
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 11%;">
+<col style="width: 73%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter label (name)</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Superset user name
+(<code>SuperSetUserName</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>supersetuser</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Superset user name.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Superset password
+(<code>SuperSetUserPassword</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Superset password. A strict password policy is recommended.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prepopulate example dashboard
+(<code>WithExample</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'Enables or disables populating the dashboard example. Setting this parameter to "Yes" populates the dashboard example.'</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Install Prophet library
+(<code>InstallProphet</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'Enables or disables Prophet library installation for Forecasting Analytics. Setting this parameter to "Yes" installs Prophet to enable Forecasting Analytics.'</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elastic container cluster name
+(<code>ClusterName</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>supersetOnAWS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the Amazon ECS cluster.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Network configuration</caption>
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 11%;">
+<col style="width: 73%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter label (name)</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public subnet for Availability Zone 1
+(<code>PublicSubnet1</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public subnet in Availability Zone 1.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public subnet for Availability Zone 2
+(<code>PublicSubnet2</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public subnet in Availability Zone 2.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private subnet for Availability Zone 1
+(<code>PrivateSubnet1</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private subnet in Availability Zone 1.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private subnet for Availability Zone 2
+(<code>PrivateSubnet2</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private subnet in Availability Zone 2.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VPC ID
+(<code>Vpc</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VPC ID to create Amazon ECS cluster.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_parameters_for_deploying_into_an_existing_vpc_2">Parameters for deploying into an Existing VPC</h3>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Account Configuration, set account info</caption>
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 11%;">
+<col style="width: 73%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter label (name)</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Superset User Name
+(<code>UserName</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Superset user name.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Superset User Password
+(<code>UserPassword</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Superset user password. Strict password policy is recommended.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pre-populate example dashboard
+(<code>WithExample</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables pre-populating official dashboard example. no = DON&#8217;T pre-populate official dashboard example; yes = pre-populate official dashboard example</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Install Prophet library
+(<code>InstallProphet</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables Prophet library installation for Forecasting Analytics. no = DON&#8217;T install Prophet for Forecasting Analytics; yes = install Prophet to enable Forecasting Analytics</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ECS Cluster Name
+(<code>ClusterName</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>supersetOnAWS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name for the ECS Cluster to use.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. Network Configuration, create new VPC for AWS ECS Fargate</caption>
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 11%;">
+<col style="width: 73%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter label (name)</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vpc ID
+(<code>VpcID</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VPC Id</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public Subnet Id for the first Availability Zone
+(<code>PublicSubnet1ID</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public Subnet Id for the first Availability Zone</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public Subnet Id for the second Availability Zone
+(<code>PublicSubnet2ID</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public Subnet Id for the second Availability Zone</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private Subnet Id for the first Availability Zone
+(<code>PrivateSubnet1AID</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private Subnet Id for the first Availability Zone</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private Subnet Id for the second Availability Zone
+(<code>PrivateSubnet2AID</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private Subnet Id for the second Availability Zone</p></td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -1316,7 +1718,7 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 <h2 id="_send_us_feedback">Send us feedback</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To post feedback, submit feature ideas, or report bugs, use the <strong>Issues</strong> section of the <a href="https://github.com/aws-quickstart/quickstart-superset-on-aws" target="_blank" rel="noopener">GitHub repository</a> for this Quick Start. To submit code, see the <a href="https://aws-quickstart.github.io/" target="_blank" rel="noopener">Quick Start Contributor’s Guide</a>.</p>
+<p>To post feedback, submit feature ideas, or report bugs, use the <strong>Issues</strong> section of the <a href="https://github.com/aws-quickstart/quickstart-apache-superset" target="_blank" rel="noopener">GitHub repository</a> for this Quick Start. To submit code, see the <a href="https://aws-quickstart.github.io/" target="_blank" rel="noopener">Quick Start Contributor’s Guide</a>.</p>
 </div>
 </div>
 </div>
@@ -1324,7 +1726,7 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 <h2 id="_quick_start_reference_deployments">Quick Start reference deployments</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>See the <a href="https://aws.amazon.com/quickstart/">AWS Quick Start home page</a>.</p>
+<p>See the <a href="https://aws.amazon.com/quickstart/" target="_blank" rel="noopener">AWS Quick Start home page</a>.</p>
 </div>
 </div>
 </div>
@@ -1332,7 +1734,7 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 <h2 id="_github_repository">GitHub repository</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Visit our <a href="https://github.com/aws-quickstart/quickstart-superset-on-aws" target="_blank" rel="noopener">GitHub repository</a> to download
+<p>Visit our <a href="https://github.com/aws-quickstart/quickstart-apache-superset" target="_blank" rel="noopener">GitHub repository</a> to download
 the templates and scripts for this Quick Start, to post your comments,
 and to share your customizations with others.</p>
 </div>
@@ -1360,9 +1762,9 @@ and to share your customizations with others.</p>
 </html>
 <!--
 repo commit:
-c6c4b1cb8635d575c9c44f5c4d1471b67deb6259
+9535fd433201ac685a1ddc2d5208962015953dc7
 
 submodule config:
- 59b9927c61cd1831141cf0350520c89abb2246da docs/boilerplate (remotes/origin/revert-131-doc-edits-25-g59b9927)
+ 6f77ca5b064a055ec8269614e4daf68406eacdca docs/boilerplate (heads/main)
  ffc7af4e59a09dbf52199a3ecf70f3805abeff48 submodules/quickstart-aws-vpc (v1.0-58-gffc7af4)
 -->
