@@ -848,9 +848,9 @@ p.footer-text a{color:#d7d8d8}
 <li><a href="#_customer_responsibility">Customer responsibility</a></li>
 <li><a href="#_parameter_reference">Parameter reference</a>
 <ul class="sectlevel2">
-<li><a href="#_parameters_for_deploying_into_an_new_vpc">Parameters for deploying into an new VPC</a></li>
+<li><a href="#_parameters_for_deploying_into_a_new_vpc">Parameters for deploying into a new VPC</a></li>
 <li><a href="#_parameters_for_deploying_into_an_existing_vpc">Parameters for deploying into an existing VPC</a></li>
-<li><a href="#_parameters_for_deploying_into_an_existing_vpc_2">Parameters for deploying into an Existing VPC</a></li>
+<li><a href="#_parameters_for_deploying_into_an_existing_vpc_2">Parameters for deploying into an existing VPC</a></li>
 </ul>
 </li>
 <li><a href="#_send_us_feedback">Send us feedback</a></li>
@@ -900,7 +900,7 @@ report bugs, or submit feature ideas for this Quick Start.
 <p>This Quick Start guide provides instructions for deploying the Apache Superset reference architecture on the AWS Cloud. Apache Superset is open-source software that can help you with data exploration and visualization. It uses ClickHouse as a database management system to store data that can be visualized through Apache Superset.</p>
 </div>
 <div class="paragraph">
-<p>CLickHouse is an open-source, column-oriented database management system, which can be used for online analytical processing of queries (OLAP). ClickHouse supports linear scalability, compression, and drive optimization. It also comes with features, such as distributed and parallel query processing. For more information, see the <a href="https://clickhouse.tech/" target="_blank" rel="noopener">ClickHouse website</a>.</p>
+<p>ClickHouse is an open-source, column-oriented database management system, which can be used for online analytical processing of queries (OLAP). ClickHouse supports linear scalability, compression, and drive optimization. It also comes with features, such as distributed and parallel query processing. For more information, see the <a href="https://clickhouse.tech/" target="_blank" rel="noopener">ClickHouse website</a>.</p>
 </div>
 <div class="paragraph">
 <p>This Quick Start is for users who want to use Apache Superset as a business intelligence platform for transitioning from data-driven cognition to data-driven decision making, following AWS best practices.</p>
@@ -1017,18 +1017,17 @@ AWS Cloud.</p>
 best practices, to provide you with your own virtual network on AWS.*</p>
 </li>
 <li>
-<p>A managed internet gateway to direct inbound traffic to an Application Load Balancer, which manages traffic to the Fargate cluster.</p>
+<p>A managed internet gateway to direct inbound traffic to an Application Load Balancer, which manages traffic to the AWS Fargate cluster.</p>
 </li>
 <li>
-<p>In the public subnets, managed network address translation (NAT) gateways to provide outbound
-internet access for resources in the private subnets.*</p>
+<p>In the public subnets, managed network address translation (NAT) gateways to provide outbound internet access for resources in the private subnets.*</p>
 </li>
 <li>
 <p>In the private subnets:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>An Amazon ECS cluster using Fargate to provide all Superset functions, including the core system, cache, database, message queue, and frontend.</p>
+<p>An Amazon ECS cluster using AWS Fargate to provide all Superset functions, including the core system, cache, database, message queue, and frontend.</p>
 </li>
 <li>
 <p>Amazon EFS to provide metadata, query cached-data persistency, and share service modules.</p>
@@ -1040,10 +1039,10 @@ internet access for resources in the private subnets.*</p>
 </div>
 </li>
 <li>
-<p>Amazon Athena, a serverless, interactive query service to query data and analyze big data in Amazon S3 using standard SQL.</p>
+<p>Amazon Athena, a serverless, interactive service to query data and analyze big data in Amazon S3 using standard SQL.</p>
 </li>
 <li>
-<p>Amazon Redshift, a fully managed, petabyte-scale data warehouse service.</p>
+<p>Amazon Redshift, a fully managed, data-warehouse service.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1256,7 +1255,7 @@ If you deploy Apache Superset into an existing VPC, ensure that your VPC has two
 </table>
 </li>
 <li>
-<p>Check the AWS Region that’s displayed in the upper-right corner of the navigation bar, and change it if necessary. This Region is where the network infrastructure for Apache Superset is built. The template launches in the cn-north-1 Region by default. For other choices, see <a href="#_supported_regions">Supported Regions</a>, earlier in this guide.</p>
+<p>Check the AWS Region that’s displayed in the upper-right corner of the navigation bar, and change it if necessary. This Region is where the network infrastructure for Apache Superset is built. The template launches in the us-east-1 Region by default. For other choices, see <a href="#_supported_regions">Supported Regions</a>, earlier in this guide.</p>
 </li>
 <li>
 <p>On the <strong>Create stack</strong> page, keep the default setting for the template URL, and then choose <strong>Next</strong>.</p>
@@ -1381,7 +1380,7 @@ Unless you are customizing the Quick Start templates for your own deployment pro
 </table>
 </div>
 <div class="sect2">
-<h3 id="_parameters_for_deploying_into_an_new_vpc">Parameters for deploying into an new VPC</h3>
+<h3 id="_parameters_for_deploying_into_a_new_vpc">Parameters for deploying into a new VPC</h3>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. AWS account configuration</caption>
 <colgroup>
@@ -1413,13 +1412,13 @@ Unless you are customizing the Quick Start templates for your own deployment pro
 <td class="tableblock halign-left valign-top"><p class="tableblock">Populate example dashboard
 (<code>WithExample</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">'Enables or disables populating the dashboard example. Setting this parameter to "Yes" populates the dashboard example.'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables populating the dashboard example. Setting this parameter to "yes" populates the dashboard example.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Install Prophet library
 (<code>InstallProphet</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">'Enables or disables Prophet library installation for Forecasting Analytics. Setting this parameter to "Yes" installs Prophet to enable Forecasting Analytics.'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables Prophet library installation for Forecasting Analytics. Setting this parameter to "yes" installs Prophet to enable Forecasting Analytics.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Elastic container cluster name
@@ -1460,7 +1459,7 @@ Unless you are customizing the Quick Start templates for your own deployment pro
 <td class="tableblock halign-left valign-top"><p class="tableblock">Public subnet for Availability Zone 1
 (<code>PublicSubnet1CIDR</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>192.168.10.0/24</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Enter the IP range (CIDR notation) for the public subnet in the Availability Zone 1.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enter the IP range (CIDR notation) for the public subnet in Availability Zone 1.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Public subnet for Availability Zone 2
@@ -1551,13 +1550,13 @@ Unless you are customizing the Quick Start templates for your own deployment pro
 <td class="tableblock halign-left valign-top"><p class="tableblock">Prepopulate example dashboard
 (<code>WithExample</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">'Enables or disables populating the dashboard example. Setting this parameter to "Yes" populates the dashboard example.'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables populating the dashboard example. Setting this parameter to "yes" populates the dashboard example.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Install Prophet library
 (<code>InstallProphet</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">'Enables or disables Prophet library installation for Forecasting Analytics. Setting this parameter to "Yes" installs Prophet to enable Forecasting Analytics.'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables Prophet library installation for Forecasting Analytics. Setting this parameter to "yes" installs Prophet to enable Forecasting Analytics.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Elastic container cluster name
@@ -1616,9 +1615,9 @@ Unless you are customizing the Quick Start templates for your own deployment pro
 </table>
 </div>
 <div class="sect2">
-<h3 id="_parameters_for_deploying_into_an_existing_vpc_2">Parameters for deploying into an Existing VPC</h3>
+<h3 id="_parameters_for_deploying_into_an_existing_vpc_2">Parameters for deploying into an existing VPC</h3>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Account Configuration, set account info</caption>
+<caption class="title">Table 6. Account configuration</caption>
 <colgroup>
 <col style="width: 16%;">
 <col style="width: 11%;">
@@ -1633,39 +1632,39 @@ Unless you are customizing the Quick Start templates for your own deployment pro
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Superset User Name
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Superset user Name
 (<code>UserName</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Superset user name.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Superset User Password
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Superset password
 (<code>UserPassword</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Superset user password. Strict password policy is recommended.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Superset password. A strict password policy is recommended.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Pre-populate example dashboard
+<td class="tableblock halign-left valign-top"><p class="tableblock">Populate example dashboard
 (<code>WithExample</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables pre-populating official dashboard example. no = DON&#8217;T pre-populate official dashboard example; yes = pre-populate official dashboard example</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables populating the dashboard example. Setting this parameter to "yes" populates the dashboard example.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Install Prophet library
 (<code>InstallProphet</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables Prophet library installation for Forecasting Analytics. no = DON&#8217;T install Prophet for Forecasting Analytics; yes = install Prophet to enable Forecasting Analytics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables Prophet library installation for Forecasting Analytics. Setting this parameter to "yes" installs Prophet to enable Forecasting Analytics.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ECS Cluster Name
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon ECS cluster name
 (<code>ClusterName</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>supersetOnAWS</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name for the ECS Cluster to use.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the Amazon ECS cluster.</p></td>
 </tr>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Network Configuration, create new VPC for AWS ECS Fargate</caption>
+<caption class="title">Table 7. Network configuration</caption>
 <colgroup>
 <col style="width: 16%;">
 <col style="width: 11%;">
@@ -1680,34 +1679,34 @@ Unless you are customizing the Quick Start templates for your own deployment pro
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Vpc ID
+<td class="tableblock halign-left valign-top"><p class="tableblock">VPC ID
 (<code>VpcID</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">VPC Id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VPC ID.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Public Subnet Id for the first Availability Zone
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public subnet for Availability Zone 1
 (<code>PublicSubnet1ID</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Public Subnet Id for the first Availability Zone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public subnet for Availability Zone 1.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Public Subnet Id for the second Availability Zone
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public subnet for Availability Zone 2
 (<code>PublicSubnet2ID</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Public Subnet Id for the second Availability Zone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public subnet for Availability Zone 2.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Private Subnet Id for the first Availability Zone
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private subnet for Availability Zone 1
 (<code>PrivateSubnet1AID</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Private Subnet Id for the first Availability Zone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private subnet for Availability Zone 1.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Private Subnet Id for the second Availability Zone
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private subnet for Availability Zone 2
 (<code>PrivateSubnet2AID</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Private Subnet Id for the second Availability Zone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private subnet for Availability Zone 2.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1762,9 +1761,9 @@ and to share your customizations with others.</p>
 </html>
 <!--
 repo commit:
-9535fd433201ac685a1ddc2d5208962015953dc7
+dc37c135b946fdbac2cc1f763c3547c213376667
 
 submodule config:
- 6f77ca5b064a055ec8269614e4daf68406eacdca docs/boilerplate (heads/main)
+ 6f77ca5b064a055ec8269614e4daf68406eacdca docs/boilerplate (remotes/origin/MarciaRieferJohnston-patch-2-6-g6f77ca5)
  ffc7af4e59a09dbf52199a3ecf70f3805abeff48 submodules/quickstart-aws-vpc (v1.0-58-gffc7af4)
 -->

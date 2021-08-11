@@ -851,9 +851,9 @@ p.footer-text a{color:#d7d8d8}
 <li><a href="#_troubleshooting">Troubleshooting</a></li>
 <li><a href="#_parameter_reference">Parameter reference</a>
 <ul class="sectlevel2">
-<li><a href="#_parameters_for_deploying_into_an_new_vpc">Parameters for deploying into an new VPC</a></li>
+<li><a href="#_parameters_for_deploying_into_a_new_vpc">Parameters for deploying into a new VPC</a></li>
 <li><a href="#_parameters_for_deploying_into_an_existing_vpc">Parameters for deploying into an existing VPC</a></li>
-<li><a href="#_parameters_for_deploying_into_an_existing_vpc_2">Parameters for deploying into an Existing VPC</a></li>
+<li><a href="#_parameters_for_deploying_into_an_existing_vpc_2">Parameters for deploying into an existing VPC</a></li>
 </ul>
 </li>
 <li><a href="#_send_us_feedback">Send us feedback</a></li>
@@ -1371,7 +1371,7 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 </table>
 </div>
 <div class="sect2">
-<h3 id="_parameters_for_deploying_into_an_new_vpc">Parameters for deploying into an new VPC</h3>
+<h3 id="_parameters_for_deploying_into_a_new_vpc">Parameters for deploying into a new VPC</h3>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. AWS account configuration</caption>
 <colgroup>
@@ -1403,13 +1403,13 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 <td class="tableblock halign-left valign-top"><p class="tableblock">Populate example dashboard
 (<code>WithExample</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">'Enables or disables populating the dashboard example. Setting this parameter to "Yes" populates the dashboard example.'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables populating the dashboard example. Setting this parameter to "yes" populates the dashboard example.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Install Prophet library
 (<code>InstallProphet</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">'Enables or disables Prophet library installation for Forecasting Analytics. Setting this parameter to "Yes" installs Prophet to enable Forecasting Analytics.'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables Prophet library installation for Forecasting Analytics. Setting this parameter to "yes" installs Prophet to enable Forecasting Analytics.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Elastic container cluster name
@@ -1450,7 +1450,7 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 <td class="tableblock halign-left valign-top"><p class="tableblock">Public subnet for Availability Zone 1
 (<code>PublicSubnet1CIDR</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>192.168.10.0/24</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Enter the IP range (CIDR notation) for the public subnet in the Availability Zone 1.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enter the IP range (CIDR notation) for the public subnet in Availability Zone 1.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Public subnet for Availability Zone 2
@@ -1541,13 +1541,13 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 <td class="tableblock halign-left valign-top"><p class="tableblock">Prepopulate example dashboard
 (<code>WithExample</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>yes</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">'Enables or disables populating the dashboard example. Setting this parameter to "Yes" populates the dashboard example.'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables populating the dashboard example. Setting this parameter to "yes" populates the dashboard example.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Install Prophet library
 (<code>InstallProphet</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">'Enables or disables Prophet library installation for Forecasting Analytics. Setting this parameter to "Yes" installs Prophet to enable Forecasting Analytics.'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables Prophet library installation for Forecasting Analytics. Setting this parameter to "yes" installs Prophet to enable Forecasting Analytics.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Elastic container cluster name
@@ -1606,9 +1606,9 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 </table>
 </div>
 <div class="sect2">
-<h3 id="_parameters_for_deploying_into_an_existing_vpc_2">Parameters for deploying into an Existing VPC</h3>
+<h3 id="_parameters_for_deploying_into_an_existing_vpc_2">Parameters for deploying into an existing VPC</h3>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Account Configuration, set account info</caption>
+<caption class="title">Table 6. Account configuration</caption>
 <colgroup>
 <col style="width: 16%;">
 <col style="width: 11%;">
@@ -1623,39 +1623,39 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Superset User Name
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Superset user Name
 (<code>UserName</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Superset user name.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Superset User Password
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initial Superset password
 (<code>UserPassword</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Superset user password. Strict password policy is recommended.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Superset password. A strict password policy is recommended.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Pre-populate example dashboard
+<td class="tableblock halign-left valign-top"><p class="tableblock">Populate example dashboard
 (<code>WithExample</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables pre-populating official dashboard example. no = DON&#8217;T pre-populate official dashboard example; yes = pre-populate official dashboard example</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables populating the dashboard example. Setting this parameter to "yes" populates the dashboard example.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Install Prophet library
 (<code>InstallProphet</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables Prophet library installation for Forecasting Analytics. no = DON&#8217;T install Prophet for Forecasting Analytics; yes = install Prophet to enable Forecasting Analytics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables Prophet library installation for Forecasting Analytics. Setting this parameter to "yes" installs Prophet to enable Forecasting Analytics.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ECS Cluster Name
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon ECS cluster name
 (<code>ClusterName</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>supersetOnAWS</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name for the ECS Cluster to use.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the Amazon ECS cluster.</p></td>
 </tr>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Network Configuration, create new VPC for AWS ECS Fargate</caption>
+<caption class="title">Table 7. Network configuration</caption>
 <colgroup>
 <col style="width: 16%;">
 <col style="width: 11%;">
@@ -1670,34 +1670,34 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Vpc ID
+<td class="tableblock halign-left valign-top"><p class="tableblock">VPC ID
 (<code>VpcID</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">VPC Id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VPC ID.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Public Subnet Id for the first Availability Zone
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public subnet for Availability Zone 1
 (<code>PublicSubnet1ID</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Public Subnet Id for the first Availability Zone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public subnet for Availability Zone 1.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Public Subnet Id for the second Availability Zone
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public subnet for Availability Zone 2
 (<code>PublicSubnet2ID</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Public Subnet Id for the second Availability Zone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public subnet for Availability Zone 2.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Private Subnet Id for the first Availability Zone
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private subnet for Availability Zone 1
 (<code>PrivateSubnet1AID</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Private Subnet Id for the first Availability Zone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private subnet for Availability Zone 1.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Private Subnet Id for the second Availability Zone
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private subnet for Availability Zone 2
 (<code>PrivateSubnet2AID</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Private Subnet Id for the second Availability Zone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private subnet for Availability Zone 2.</p></td>
 </tr>
 </tbody>
 </table>
