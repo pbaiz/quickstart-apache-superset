@@ -897,10 +897,10 @@ report bugs, or submit feature ideas for this Quick Start.
 <h2 id="_overview">Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This Quick Start guide provides instructions for deploying the Apache Superset reference architecture on the AWS Cloud. Apache Superset is open-source software that can help you with data exploration and visualization. It uses ClickHouse as a database management system to store data that can be visualized through Apache Superset.</p>
+<p>This Quick Start guide provides instructions for deploying the Apache Superset reference architecture on the AWS Cloud. Apache Superset is open-source software that can help you with data exploration and visualization.</p>
 </div>
 <div class="paragraph">
-<p>ClickHouse is an open-source, column-oriented database management system, which can be used for online analytical processing of queries (OLAP). ClickHouse supports linear scalability, compression, and drive optimization. It also comes with features, such as distributed and parallel query processing. For more information, see the <a href="https://clickhouse.tech/" target="_blank" rel="noopener">ClickHouse website</a>.</p>
+<p>This deployment supports many database management systems to store data that can be visualized through Apache Superset. Examples of supported database systems include <a href="https://docs.aws.amazon.com/athena/latest/ug/what-is.html" target="_blank" rel="noopener">Amazon Athena</a>, <a href="https://docs.aws.amazon.com/redshift/latest/gsg/getting-started.html" target="_blank" rel="noopener">Amazon Redshift</a>, <a href="https://clickhouse.tech/" target="_blank" rel="noopener">ClickHouse</a>, MySQL, and PostgreSQL.</p>
 </div>
 <div class="paragraph">
 <p>This Quick Start is for users who want to use Apache Superset as a business intelligence platform for transitioning from data-driven cognition to data-driven decision making, following AWS best practices.</p>
@@ -943,10 +943,10 @@ Amazon may share user-deployment information with the AWS Partner that collabora
 <p>Platform elasticity and scalability. Users do not need to maintain the infrastructure and associated resource scheduling.</p>
 </li>
 <li>
-<p>To display existing data, preinstalled SQL, PostgreSQL, Amazon Redshift, Athena, and ClickHouse data-source driver.</p>
+<p>Visualizations for existing data, preinstalled SQL, PostgreSQL, Amazon Redshift, Amazon Athena, and ClickHouse data-source driver.</p>
 </li>
 <li>
-<p>For future trend predictions, a preinstalled timing-prediction algorithm that is based on imported data.</p>
+<p>Future trend predictions, a preinstalled timing-prediction algorithm that is based on imported data.</p>
 </li>
 <li>
 <p>Visual Kanban for real-time service metrics and comprehensive application monitoring.</p>
@@ -1043,16 +1043,9 @@ best practices, to provide you with your own virtual network on AWS.*</p>
 </li>
 <li>
 <p>Amazon Redshift, a fully managed, data-warehouse service.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>A MySQL instance, which is included with ClickHouse.</p>
 </li>
 <li>
-<p>A Postgres instance, which is included with ClickHouse.</p>
-</li>
-</ul>
-</div>
+<p>Supported database systems, such as Amazon Athena, Amazon Redshift, ClickHouse, MySQL, and PostgreSQL.</p>
 </li>
 </ul>
 </div>
@@ -1761,9 +1754,9 @@ and to share your customizations with others.</p>
 </html>
 <!--
 repo commit:
-dc37c135b946fdbac2cc1f763c3547c213376667
+493ab46f2e433432f9f97f971174263cefe2ab09
 
 submodule config:
- 6f77ca5b064a055ec8269614e4daf68406eacdca docs/boilerplate (remotes/origin/MarciaRieferJohnston-patch-2-6-g6f77ca5)
+ 6f77ca5b064a055ec8269614e4daf68406eacdca docs/boilerplate (remotes/origin/swingline-test-25-g6f77ca5)
  ffc7af4e59a09dbf52199a3ecf70f3805abeff48 submodules/quickstart-aws-vpc (v1.0-58-gffc7af4)
 -->
