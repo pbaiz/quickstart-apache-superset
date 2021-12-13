@@ -226,6 +226,7 @@ Resources:
         # namespace name created in cloud map
         - !Sub ${ClusterName}.local
         Essential: false
+        # PBV: This image is only used to set up the cluster, see https://stackoverflow.com/questions/69578439/issue-with-ecs-searchdomain-sidecar-in-ecs-with-docker-compose
         Image: docker/ecs-searchdomain-sidecar:1.0
         LogConfiguration:
           LogDriver: awslogs
@@ -281,6 +282,7 @@ Resources:
         - Name: SUPERSET_PASSWORD
           Value: !Ref UserPassword
         Essential: true
+        # PBV: Need to specify postgres image version we want
         Image: docker.io/library/postgres:10@sha256:e5802ff7be3c818ce23924fe27e29621ba1120bfdc572232dc6cd0154f8c844f
         LinuxParameters: {}
         LogConfiguration:
@@ -516,6 +518,7 @@ Resources:
         - !Sub ${AWS::Region}.compute.internal
         - !Sub ${ClusterName}.local
         Essential: false
+        # PBV: This image is only used to set up the cluster, see https://stackoverflow.com/questions/69578439/issue-with-ecs-searchdomain-sidecar-in-ecs-with-docker-compose
         Image: docker/ecs-searchdomain-sidecar:1.0
         LogConfiguration:
           LogDriver: awslogs
@@ -530,6 +533,7 @@ Resources:
         - Condition: SUCCESS
           ContainerName: Redis_ResolvConf_InitContainer
         Essential: true
+        # PBV: Need to specify redis image version we want
         Image: docker.io/library/redis:latest@sha256:2d17fb90c268b1c7799234216c875490a35fe8fa13fbc5495b7247d93e77255e
         LinuxParameters: {}
         LogConfiguration:
@@ -716,6 +720,7 @@ Resources:
         - !Sub ${AWS::Region}.compute.internal
         - !Sub ${ClusterName}.local
         Essential: false
+        # PBV: This image is only used to set up the cluster, see https://stackoverflow.com/questions/69578439/issue-with-ecs-searchdomain-sidecar-in-ecs-with-docker-compose
         Image: docker/ecs-searchdomain-sidecar:1.0
         LogConfiguration:
           LogDriver: awslogs
@@ -775,6 +780,7 @@ Resources:
         - Name: InstallProphet
           Value: !Ref InstallProphet
         Essential: true
+        # PBV: Need to specify superset image version we want
         Image: public.ecr.aws/p9r6s5p7/superset:latest
         LinuxParameters: {}
         LogConfiguration:
@@ -976,6 +982,7 @@ Resources:
         - !Sub ${AWS::Region}.compute.internal
         - !Sub ${ClusterName}.local
         Essential: false
+        # PBV: This image is only used to set up the cluster, see https://stackoverflow.com/questions/69578439/issue-with-ecs-searchdomain-sidecar-in-ecs-with-docker-compose
         Image: docker/ecs-searchdomain-sidecar:1.0
         LogConfiguration:
           LogDriver: awslogs
@@ -1032,6 +1039,7 @@ Resources:
         - Name: SUPERSET_PASSWORD
           Value: !Ref UserPassword
         Essential: false
+        # PBV: Need to specify superset image version we want
         Image: public.ecr.aws/p9r6s5p7/superset:latest
         LinuxParameters: {}
         LogConfiguration:
@@ -1060,6 +1068,7 @@ Resources:
         - Condition: SUCCESS
           ContainerName: superset-init
         Essential: true
+        # PBV: Need to check why we need this?
         Image: amazon/aws-cli
         LogConfiguration:
           LogDriver: awslogs
@@ -1210,6 +1219,7 @@ Resources:
         - !Sub ${AWS::Region}.compute.internal
         - !Sub ${ClusterName}.local
         Essential: false
+        # PBV: This image is only used to set up the cluster, see https://stackoverflow.com/questions/69578439/issue-with-ecs-searchdomain-sidecar-in-ecs-with-docker-compose
         Image: docker/ecs-searchdomain-sidecar:1.0
         LogConfiguration:
           LogDriver: awslogs
@@ -1267,6 +1277,7 @@ Resources:
         - Name: SUPERSET_PASSWORD
           Value: !Ref UserPassword
         Essential: true
+        # PBV: Need to specify superset-node image version we want
         Image: public.ecr.aws/p9r6s5p7/superset-node:latest
         LinuxParameters: {}
         LogConfiguration:
@@ -1419,6 +1430,7 @@ Resources:
         - !Sub ${AWS::Region}.compute.internal
         - !Sub ${ClusterName}.local
         Essential: false
+        # PBV: This image is only used to set up the cluster, see https://stackoverflow.com/questions/69578439/issue-with-ecs-searchdomain-sidecar-in-ecs-with-docker-compose
         Image: docker/ecs-searchdomain-sidecar:1.0
         LogConfiguration:
           LogDriver: awslogs
@@ -1477,6 +1489,7 @@ Resources:
         - Name: SUPERSET_PASSWORD
           Value: !Ref UserPassword
         Essential: true
+        # PBV: Need to specify superset image version we want
         Image: public.ecr.aws/p9r6s5p7/superset:latest
         LinuxParameters: {}
         LogConfiguration:
@@ -1633,6 +1646,7 @@ Resources:
         - !Sub ${AWS::Region}.compute.internal
         - !Sub ${ClusterName}.local
         Essential: false
+        # PBV: This image is only used to set up the cluster, see https://stackoverflow.com/questions/69578439/issue-with-ecs-searchdomain-sidecar-in-ecs-with-docker-compose
         Image: docker/ecs-searchdomain-sidecar:1.0
         LogConfiguration:
           LogDriver: awslogs
@@ -1691,6 +1705,7 @@ Resources:
         - Name: SUPERSET_PASSWORD
           Value: !Ref UserPassword
         Essential: true
+        # PBV: Need to specify superset image version we want
         Image: public.ecr.aws/p9r6s5p7/superset:latest
         LinuxParameters: {}
         LogConfiguration:
