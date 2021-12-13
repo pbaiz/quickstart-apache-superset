@@ -154,7 +154,7 @@ Resources:
   Vpc:
     Type: 'AWS::CloudFormation::Stack'
     Properties:
-      TemplateURL: 'https://clearly-superset-template.s3.eu-west-2.amazonaws.com/aws-vpc.template.yaml'
+      TemplateURL: 'https://clearly-superset-template.s3.eu-west-2.amazonaws.com/aws-vpc.template-test.yaml'
       #TemplateURL: !Sub
       #  - 'https://raw.githubusercontent.com/aws-quickstart/quickstart-aws-vpc/b7aefd089e944d77cdc2b083886cdc498d2a6ee4/templates/aws-vpc.template.yaml'
       #  #- 'https://${S3Bucket}.s3.${S3Region}.${AWS::URLSuffix}/${QSS3KeyPrefix}submodules/quickstart-aws-vpc/templates/aws-vpc.template.yaml'
