@@ -77,7 +77,7 @@ Parameters:
     Type: String
   WithExample:
     Type: String
-    Default: "no"
+    Default: "yes"
     Description: 'Enables or disables populating the dashboard example. Setting this parameter to "yes" populates the dashboard example.'
   InstallProphet:
     Type: String

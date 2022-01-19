@@ -1706,7 +1706,8 @@ Resources:
           Value: !Ref UserPassword
         Essential: true
         # PBV: Need to specify superset image version we want
-        Image: public.ecr.aws/p9r6s5p7/superset:latest
+        #Image: public.ecr.aws/p9r6s5p7/superset:latest
+        Image: public.ecr.aws/p9r6s5p7/parag...
         LinuxParameters: {}
         LogConfiguration:
           LogDriver: awslogs
